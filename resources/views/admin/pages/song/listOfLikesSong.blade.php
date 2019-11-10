@@ -23,7 +23,4 @@
             </div>
         @endforeach
     </div>
-    <div class="text-center">
-        <a class="btn btn-outline-info" href="">Show more</a>
-    </div>
 </div>

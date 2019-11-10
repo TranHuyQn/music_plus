@@ -16,8 +16,8 @@ Route::get('/', 'IndexController@index')->name('index');
 
 Auth::routes(['verify'=>true]);
 
-Route::get('profile', 'UserController@show')->name('profile');
-Route::post('profile', 'UserController@update_avatar');
+Route::get('profile', 'UserController@show')->middleware('login')->name('profile');
+Route::post('profile', 'UserController@update_avatar')->middleware('login');
 
 Route::get('/like/vote', 'LikeController@vote')->middleware('auth');
 
@@ -54,7 +54,7 @@ Route::group(['prefix' => 'manage', 'middleware' => ['login']], function () {
         Route::post('/', 'PlaylistController@store')->name('playlists.store');
         Route::post('/update/{id}', 'PlaylistController@update')->name('playlists.update');
         Route::post('/addSong/{playlistId}', 'PlaylistController@addSong')->name('playlists.addSong');
-        Route::get('/{id}/destroyAll', 'PlaylistController@destroyAll')->name('playlist.destroyAll');
+        Route::get('/{playlistId}/destroyAll', 'PlaylistController@destroyAll')->name('playlist.destroyAll');
         Route::get('/{id}/showHotPlaylist', 'PlaylistController@showHotPlaylist')->name('playlists.showHotPlaylist');
     });
 
@@ -69,9 +69,9 @@ Route::group(['prefix' => 'manage', 'middleware' => ['login']], function () {
     Route::group(['prefix' => 'songs'], function () {
         Route::get('/', 'SongController@songManager')->name('songs.list');
         Route::get('/create', 'SongController@create')->name('songs.create');
-        Route::get('/{id}/edit', 'SongController@edit')->name('songs.edit');
+        Route::get('/{id}/edit', 'SongController@edit')->middleware('edit-song')->name('songs.edit');
         Route::post('/{id}/edit', 'SongController@update')->name('songs.update');
-        Route::get('/{id}/destroy', 'SongController@destroy')->name('songs.destroy');
+        Route::get('/{id}/destroy', 'SongController@destroy')->middleware('edit-song')->name('songs.destroy');
     });
 
     Route::group(['prefix' => 'artists'], function () {

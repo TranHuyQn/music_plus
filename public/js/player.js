@@ -23,6 +23,7 @@ if (tracks.length > 1) {
 $(document).ready(function () {
     volumeBar[0].value = audio[0].volume;
     playTrack(index);
+    console.log(tracks[index])
 });
 
 function secsToMins(time) {

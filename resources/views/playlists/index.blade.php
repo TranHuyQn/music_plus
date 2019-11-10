@@ -20,7 +20,7 @@
                                 <td>{{$STT++}}</td>
                                 <td style="text-align: left"><a
                                         href="{{ route('guest.playlists.show', $playlist->id) }}">
-                                        {{strtoupper($playlist->name)}}</a>
+                                        {{$playlist->name}}</a>
                                 </td>
                             </tr>
                         @endforeach

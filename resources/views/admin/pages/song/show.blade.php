@@ -19,8 +19,8 @@
                         <div id="project-container">
                             <div id="overlay"></div>
                             <div id="content">
-                                <h2 class="title">Throne</h2>
-                                <h3>Bring Me The Horizon</h3>
+                                <h2 class="title"></h2>
+                                <h3 class="singer">@foreach($song->singers as $singers) {{$singers->name . '.'}}@endforeach</h3>
                                 <div class="time">
                                     <span class="current-time">0:00</span>/
                                     <span class="duration">0:00</span>
@@ -168,7 +168,7 @@
                 <div class="pd_name_lyric">
                     <h2 class="name_lyric"><b>Lời bài hát: {{ $song->name }}</b></h2>
                     <p class="name_post">
-                        Nhạc sĩ: @foreach($song->artists as $artist) {{$artist->name}}@endforeach
+                        Nhạc sĩ: @foreach($song->artists as $artist) {{$artist->name . '.'}}@endforeach
                     </p>
                     <p class="name_post">Lời đăng bởi: {{ $song->user->name }}</p>
                     <hr>

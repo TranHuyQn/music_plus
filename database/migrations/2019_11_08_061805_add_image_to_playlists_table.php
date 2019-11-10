@@ -14,7 +14,7 @@ class AddImageToPlaylistsTable extends Migration
     public function up()
     {
         Schema::table('playlists', function (Blueprint $table) {
-            $table->string('image')->after('name')->nullable();
+            $table->string('image')->after('name');
         });
     }
 

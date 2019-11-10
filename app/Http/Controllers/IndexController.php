@@ -20,9 +20,9 @@ class IndexController extends Controller
     public function index()
     {
 //        song-moi-nhat
-        $newSongs = Song::all()->sortByDesc('id')->take(4);
+        $newSongs = Song::all()->sortByDesc('id')->take(5);
 //        song-like nhieu
-        $songIds = TotalLike::where('item_id', 'like', 'song-%')->orderBy('total_like', 'Desc')->get('item_id')->take(4);
+        $songIds = TotalLike::where('item_id', 'like', 'song-%')->orderBy('total_like', 'Desc')->get('item_id')->take(5);
         $favoriteSongs = [];
         foreach ($songIds as $songId) {
             $song = Song::find(str_replace('song-', '', $songId->item_id));
@@ -32,8 +32,14 @@ class IndexController extends Controller
         $popularSongs = song::all()->sortByDesc('listen_count')->take(5);
 //        dd($popularSongs);
 
-        $singers = Singer::all()->sortByDesc('created_at')->take(4);
+        $singers = Singer::all()->sortByDesc('created_at')->take(8);
+        $newSinger = [];
+        foreach ($singers as $singer) {
+            array_push($newSinger, $singer);
+        }
+        $singers = array_chunk($newSinger, 4);
         $artists = Artist::all();
+
         $playlists = Playlist::where('listen_count', '>', 0)
             ->get()
 //            ->sortByDesc('listen_count')
@@ -42,7 +48,12 @@ class IndexController extends Controller
         /*
          * playlist-nghe-nhieu
          */
-        $popularPlaylists = Playlist::all()->sortByDesc('listen_count')->take(4);
+        $popularPlaylists = Playlist::all()->sortByDesc('listen_count')->take(8);
+        $popularPlaylistsArr = [];
+        foreach ($popularPlaylists as $popularPlaylist) {
+            array_push($popularPlaylistsArr, $popularPlaylist);
+        }
+        $popularPlaylists = array_chunk($popularPlaylistsArr, 4);
         /*
          * playlist-like-nhieu
          */

@@ -87,7 +87,7 @@ class PlaylistController extends Controller
             $playlist->name = $request->name;
             $playlist->user_id = $user->id;
             $playlist->save();
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Tạo mới playlist thành công.');
         }
     }
 
@@ -127,7 +127,7 @@ class PlaylistController extends Controller
         $playlist = Playlist::find($id);
         $playlist->name = $request->name;
         $playlist->save();
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Cập nhật playlist thành công.');
     }
 
     public function addSong(FormAddPlaylist $request, $id)
@@ -137,7 +137,7 @@ class PlaylistController extends Controller
         foreach ($songIds as $songId) {
             $playlist->songs()->attach($songId);
         }
-        return redirect()->back();
+        return redirect()->back()->with('success','Thêm bài hát thành công.');
     }
 
     public function guestIndex()

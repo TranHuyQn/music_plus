@@ -2,6 +2,8 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\EditPlaylistMiddleware;
+use App\Http\Middleware\EditSongMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -62,6 +64,8 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'login' => \App\Http\Middleware\LoginMiddleware::class,
+        'edit-song' => EditSongMiddleware::class,
+        'edit-playlist' => EditPlaylistMiddleware::class,
     ];
 
     /**

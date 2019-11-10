@@ -4,6 +4,9 @@
         @error('name')
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror
+        @if (Session::has('success'))
+            <p class="alert alert-success">{{Session::get('success')}}</p>
+        @endif
         <table class="table">
             <thead class="thead-light">
             <tr>
@@ -26,7 +29,7 @@
                 <tr class="p-2">
                     <td>{{$STT++}}</td>
                     <td style="text-align: left"><a
-                            href="{{ route('playlists.show', $playlist->id) }}">{{strtoupper($playlist->name)}}</a>
+                            href="{{ route('playlists.show', $playlist->id) }}">{{$playlist->name}}</a>
                     </td>
                     <td><span title="sửa" style="cursor: pointer" data-toggle="modal"
                               data-target="#updatePlaylist{{$playlist->id}}"><i

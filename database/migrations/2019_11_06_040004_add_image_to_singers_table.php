@@ -14,7 +14,7 @@ class AddImageToSingersTable extends Migration
     public function up()
     {
         Schema::table('singers', function (Blueprint $table) {
-            $table->string('image')->after('story')->nullable();
+            $table->string('image')->after('story');
         });
     }
 

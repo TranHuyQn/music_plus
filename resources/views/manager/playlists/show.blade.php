@@ -7,6 +7,9 @@
     @error('songIds')
     <div style="width: 50%; margin-left: 25%" class="alert alert-danger">{{ $message }}</div>
     @enderror
+    @if (Session::has('success'))
+        <p class="alert alert-success">{{Session::get('success')}}</p>
+    @endif
     <table border="1" class="table table-bordered text-center" style="width: 100%; ">
         <thead class="thead-light">
         <tr>

@@ -13,8 +13,8 @@
             <div id="project-container">
                 <div id="overlay"></div>
                 <div id="content">
-                    <h2 class="title">Throne</h2>
-                    <h3>Bring Me The Horizon</h3>
+                    <h2 class="title"></h2>
+                    <h3></h3>
                     <div class="time">
                         <span class="current-time">0:00</span>/
                         <span class="duration">0:00</span>
